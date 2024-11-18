@@ -6,7 +6,7 @@ const audiusAdapter = createEntityAdapter({});
 export const extendedAudiusSlice = audiusApiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllSongs: builder.query({
-      query: () => "/",
+      query: () => "/playlists/NY33OEZ/tracks",
       transformResponse: (response)=>{
         return audiusAdapter.setAll(audiusAdapter.getInitialState(),response.data)
       },
@@ -17,7 +17,7 @@ export const extendedAudiusSlice = audiusApiSlice.injectEndpoints({
     }),
 
     getNewSongs: builder.query({
-      query: () => "//",
+      query: () => "/tracks/trending/underground",
       transformResponse: (response)=>{
         return audiusAdapter.setAll(audiusAdapter.getInitialState(),response.data)
       },
@@ -27,7 +27,7 @@ export const extendedAudiusSlice = audiusApiSlice.injectEndpoints({
       ],
     }),
     getOldSongs: builder.query({
-      query: () => "//",
+      query: () => "/playlists/6NoW049/tracks",
       transformResponse: (response)=>{
         return audiusAdapter.setAll(audiusAdapter.getInitialState(),response.data)
       },

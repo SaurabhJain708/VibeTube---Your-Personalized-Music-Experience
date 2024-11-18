@@ -13,13 +13,13 @@ const useRtkHooks = (query) => {
     skip: query !== "trending",
   });
   const newSongs = useGetNewSongsQuery("getNewSongs", {
-    skip: query !== "new",
+    skip: query !== "NewSongs",
   });
   const OldSongs = useGetOldSongsQuery("getOldSongs", {
-    skip: query !== "old",
+    skip: query !== "OldSongs",
   });
   const AllSongs = useGetAllSongsQuery("getAllSongs", {
-    skip: query !== "all",
+    skip: query !== "AllSongs",
   });
   const Artists = useGetArtistsQuery("getArtists", {
     skip: query !== "artists",
@@ -35,13 +35,13 @@ const useRtkHooks = (query) => {
     case "trending":
       method = trending;
       break;
-    case "new":
+    case "NewSongs":
       method = newSongs;
       break;
-    case "old":
+    case "OldSongs":
       method = OldSongs;
       break;
-    case "all":
+    case "AllSongs":
       method = AllSongs;
       break;
     case "artists":
