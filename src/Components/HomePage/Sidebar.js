@@ -16,15 +16,22 @@ const Sidebar = (props) => {
   }
     const sidebarref = useRef()
     useEffect(()=>{
+      document.body.style.overflow = props.sidebar ? "hidden" : "auto";
         const handleclickoutside = (event)=>{if(sidebarref && !sidebarref.current.contains(event.target)) props.sidebar(false)}
 
         document.addEventListener("mousedown",handleclickoutside)
 
         return ()=>{
+          document.body.style.overflow = "auto";
             document.removeEventListener("mousedown",handleclickoutside)
         }
     },[props.sidebar])
   return (
+    <>
+    <div
+        className="fixed inset-0 bg-black bg-opacity-50 z-20"
+        onClick={() => props.sidebar(false)}
+      ></div>
     <motion.div
     ref={sidebarref}
     initial={{
@@ -40,7 +47,7 @@ const Sidebar = (props) => {
         duration: 0.5,
         type: 'spring'
     }}
-     className="absolute z-30 w-5/6 bg-white h-auto right-0 overflow-y-auto border-l-2">
+     className="absolute z-30 w-5/6 bg-white max-h-screen right-0 overflow-y-auto border-l-2">
       <div  className="w-full cursor-pointer hover:bg-slate-200 h-14 flex items-center mb-4">
         <button
           onClick={() => {
@@ -85,6 +92,7 @@ const Sidebar = (props) => {
         <li onClick={()=>{handleonclick('devotion')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">Devotion</p></li>
       </ul>
     </motion.div>
+    </>
   );
 };
 
