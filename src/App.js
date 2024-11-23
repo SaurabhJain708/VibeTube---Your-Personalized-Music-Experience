@@ -7,6 +7,7 @@ import Alert from "./Components/Authorisation/Alert";
 import { AnimatePresence } from "framer-motion";
 import { selectAlert } from "./features/AlertSlice";
 import { useSelector } from "react-redux";
+const SongPage = lazy(()=> import('./Components/AllComponents/SongPage'))
 const Home = lazy(() => import("./Components/HomePage/Home"));
 const Signup = lazy(() => import("./Components/Authorisation/Signup"));
 const Login = lazy(() => import("./Components/Authorisation/Login"));
@@ -56,6 +57,7 @@ function App() {
         { route: "songs", element: <Songs /> },
         { route: "trendingsongs", element: <TrendingSongs /> },
         { route: "newsongs", element: <NewSongs /> },
+        { route: 'songpage/:type/:id', element: <SongPage/>}
       ],
       PREMIUM: [
         { route: "radio", element: <Radio /> },

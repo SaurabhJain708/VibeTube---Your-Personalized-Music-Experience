@@ -24,6 +24,7 @@ const OldSongs = () => {
     <>
       <main className="relative inset-0 h-auto w-full bg-gradient-to-b from-gray-900 via-purple-800 to-purple-900 min-h-screen">
         <Header />
+        <div className=" w-full justify-center items-center mb-6"><p className='flex justify-center mb-3 font-extrabold text-3xl ml-3 text-green-500'>Old Songs</p></div>
         <section className="h-auto w-full flex flex-wrap justify-center items-center gap-4 mt-4">
           {songs?.ids?.map((postId) => {
             return <SongCard key={postId} postid={postId} type={"OldSongs"} />;

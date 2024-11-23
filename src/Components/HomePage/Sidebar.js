@@ -47,7 +47,7 @@ const Sidebar = (props) => {
         duration: 0.5,
         type: 'spring'
     }}
-     className="absolute z-30 w-5/6 bg-white max-h-screen right-0 overflow-y-auto border-l-2">
+     className="fixed z-30 w-5/6 bg-white max-h-screen right-0 overflow-y-auto border-l-2">
       <div  className="w-full cursor-pointer hover:bg-slate-200 h-14 flex items-center mb-4">
         <button
           onClick={() => {
@@ -84,7 +84,7 @@ const Sidebar = (props) => {
         <li onClick={()=>{handleonclick('newsongs')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">New Songs</p></li>
         <li onClick={()=>{handleonclick('oldsongs')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">Old Songs</p></li>
         <li onClick={()=>{handleonclick('album')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">Album</p></li>
-        <li onClick={()=>{handleonclick('artists')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">Artist</p></li>
+        <li onClick={()=>{handleonclick('artists')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">Artists</p></li>
         <li onClick={()=>{handleonclick('lyrics')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">Lyrics</p></li>
         <li onClick={()=>{handleonclick('musiclabels')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">Music Labels</p></li>
         <li onClick={()=>{handleonclick('genres')}} className="cursor-pointer hover:bg-slate-200 w-full flex items-centre h-10"><p className="ml-10 flex items-center">Genres</p></li>

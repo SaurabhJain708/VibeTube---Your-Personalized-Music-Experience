@@ -50,7 +50,7 @@ const useRtkHooks = (query) => {
     case "playlists":
       method = Playlists;
       break;
-    case "playlisytracks":
+    case "playlisttracks":
       method = PlayListTracks;
   }
 

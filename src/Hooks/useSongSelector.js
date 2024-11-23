@@ -1,4 +1,4 @@
-import { useGetAllSongsQuery, useGetNewSongsQuery, useGetOldSongsQuery, useGetTrendingSongsQuery } from "../features/AudiusSlice"
+import { useGetAllSongsQuery, useGetNewSongsQuery, useGetOldSongsQuery, useGetTracksbyUserQuery, useGetTrendingSongsQuery } from "../features/AudiusSlice"
 const useSongSelector = (type, id)=>{
     const trendingQuery =useGetTrendingSongsQuery('getTrendinSongs',{
         selectFromResult: ({data})=>({
@@ -24,6 +24,12 @@ const useSongSelector = (type, id)=>{
         }),
         skip: type!=='AllSongs',
     })
+    const usersongquery = useGetTracksbyUserQuery('getTracksbyUser',{
+        selectFromResult: ({data})=>({
+            song: data?.entities[id]
+        }),
+        skip: type!=='usersongs'
+    })
 
     switch (type){
         case 'trending':
@@ -33,7 +39,9 @@ const useSongSelector = (type, id)=>{
         case  'OldSongs':
             return oldQuery ;
         case 'AllSongs':
-            return allQuery
+            return allQuery;
+        case 'usersongs':
+            return usersongquery
     }
 }
 

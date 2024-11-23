@@ -77,14 +77,20 @@ export const extendedAudiusSlice = audiusApiSlice.injectEndpoints({
       ],
     }),
     getTracksbyId: builder.query({
-      query:()=>'//',
+      query:(id)=>`/tracks/${id}`,
+      transformResponse: (response)=>{
+        console.log('response',response)
+        return audiusAdapter.setOne(audiusAdapter.getInitialState(),response.data)
+      },
+      providesTags: [{type:'SONG', id: 'LIST'}]
+    }),
+    getTracksbyUser: builder.query({
+      query:(id)=>`/users/${id}/tracks`,
       transformResponse: (response)=>{
         return audiusAdapter.setAll(audiusAdapter.getInitialState(),response.data)
       },
-      providesTags: (result,error,arg)=>[
-        ...result?.ids?.map(id=>({type:'ALLSONGS', id})) || []
-      ]
-    }),
+      providesTags: [{type:'USERSONGS', id:'LIST'}]
+    })
 
   })
 });
@@ -97,5 +103,6 @@ export const {
     useGetArtistsQuery,
     useGetPlaylistTracksQuery,
     useGetTrendingSongsQuery,
-    useGetTracksByIdQuery,
+    useGetTracksbyIdQuery,
+    useGetTracksbyUserQuery
 } = extendedAudiusSlice;
